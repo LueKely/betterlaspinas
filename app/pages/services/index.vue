@@ -156,21 +156,21 @@ const lifeEvents = [
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <UiCard
-            v-for="cat in categories.filter(c => !c.hidden)"
-            :key="cat.href"
-            :to="cat.href"
+            v-for="category in categories.filter(category => !category.hidden)"
+            :key="category.href"
+            :to="category.href"
             interactive
             class="group flex items-start gap-4 text-gray-800"
           >
             <div class="w-14 h-14 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-2xl shrink-0 transition-all duration-200 group-hover:bg-primary-600 group-hover:text-white">
-              <i class="bi" :class="[cat.icon]" />
+              <i class="bi" :class="[category.icon]" />
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="text-lg font-semibold text-gray-900 mb-1">
-                {{ translate(cat.titleKey) }}
+                {{ translate(category.titleKey) }}
               </h3>
               <p class="text-sm text-gray-500 mb-3">
-                {{ translate(cat.descKey) }}
+                {{ translate(category.descKey) }}
               </p>
               <span class="text-primary-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                 View Services <i class="bi bi-arrow-right" />
@@ -193,7 +193,7 @@ const lifeEvents = [
         />
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <UiCard
-            v-for="event in lifeEvents.filter(e => !e.hidden)"
+            v-for="event in lifeEvents.filter(event => !event.hidden)"
             :key="event.labelKey"
             :to="event.href"
             interactive

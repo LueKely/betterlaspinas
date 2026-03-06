@@ -9,9 +9,11 @@ import type {
   LGUType,
   LGUTypeLabels,
   NavigationConfig,
+  NavigationItem,
   NewsConfig,
   OfficialsConfig,
   SeoRouteConfig,
+  ServiceItem,
   ServicesConfig,
   SiteConfig,
   StatisticsConfig,
@@ -232,9 +234,9 @@ export function getNavigationConfig(): NavigationConfig {
 
   // Filter out hidden items from mainNav
   if (config.mainNav) {
-    config.mainNav = config.mainNav.filter((item: any) => !item.hidden).map((item: any) => {
+    config.mainNav = config.mainNav.filter((item: NavigationItem) => !item.hidden).map((item: NavigationItem) => {
       if (item.children) {
-        item.children = item.children.filter((child: any) => !child.hidden)
+        item.children = item.children.filter((child: NavigationItem) => !child.hidden)
       }
       return item
     })
@@ -259,7 +261,7 @@ export function getServicesConfig(): ServicesConfig {
   const config = servicesConfig as ServicesConfig
   return {
     ...config,
-    services: config.services.filter((s: any) => s.categoryId === 'certificates'),
+    services: config.services ? config.services.filter((service: ServiceItem) => service.categoryId === 'certificates') : [],
   }
 }
 

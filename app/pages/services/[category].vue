@@ -72,7 +72,7 @@ if (!categoryContent) {
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <UiCard
-            v-for="office in categoryContent.offices.filter(o => o.hidden !== true)"
+            v-for="office in categoryContent.offices.filter(office => office.hidden !== true)"
             :key="office.title"
             :to="office.link"
             padding="p-4"
